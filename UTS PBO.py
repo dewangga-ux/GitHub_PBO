@@ -90,6 +90,30 @@ if __name__ == "__main__":
     # user_andi.saldo = 1000000.0 # Ini akan menyebabkan AttributeError/Error karena tidak ada setter
 
     class Dokumen:
-    def __init__(self, nama, jumlah_halaman):
-        self.nama = nama
-        self.jumlah_halaman = jumlah_halaman
+        def __init__(self, nama, jumlah_halaman):
+            self.nama = nama
+            self.jumlah_halaman = jumlah_halaman
+    class Pelanggan:
+        def __init__(self, nama, saldo_awal):
+            self.nama = nama
+            # Menggunakan __ (double underscore) agar property menjadi private
+            self.__saldo = float(saldo_awal)
+
+        @property
+        def saldo(self):
+            """Getter: Membolehkan kita melihat saldo, tapi tidak mengubahnya"""
+            return self.__saldo
+
+        def kurangi_saldo(self, jumlah):
+            """Metode terkontrol untuk memotong saldo"""
+            if jumlah <= self.__saldo:
+                self.__saldo -= jumlah
+                return True
+            return False
+
+    def top_up(self, jumlah):
+        """Metode terkontrol untuk menambah saldo"""
+        if jumlah > 0:
+            self.__saldo += jumlah
+            print(f"[TopUp] Berhasil. Saldo sekarang: Rp{self.__saldo}")
+    
