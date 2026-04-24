@@ -88,8 +88,3 @@ if __name__ == "__main__":
     # --- PEMBUKTIAN ENKAPSULASI ---
     # print(user_andi.__saldo) # Ini akan menyebabkan AttributeError
     # user_andi.saldo = 1000000.0 # Ini akan menyebabkan AttributeError/Error karena tidak ada setter
-
-class Dokumen:
-    def __init__(self, nama, jumlah_halaman):
-        self.nama = nama
-        self.jumlah_halaman = jumlah_halaman
